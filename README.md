@@ -1,0 +1,2 @@
+# manpy
+makeshift python manpages
