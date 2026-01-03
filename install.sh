@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Configuration
-GITHUB_URL="https://raw.githubusercontent.com/TheValiant/manpy/main/pyhelp.py"
-DEST_PATH="$HOME/pyhelp.py"
+GITHUB_URL="https://raw.githubusercontent.com/TheValiant/manpy/main/manpy.py"
+DEST_PATH="$HOME/manpy.py"
 BASHRC_FILE="$HOME/.bashrc"
 ZSHRC_FILE="$HOME/.zshrc"
 MARKER_START="# --- manpy configuration start ---"
@@ -19,7 +19,7 @@ echo -e "${GREEN}Starting manpy installation...${NC}"
 # ------------------------------------------------------------------
 # 1. Download the Python script
 # ------------------------------------------------------------------
-echo -e "Downloading pyhelp.py to ${DEST_PATH}..."
+echo -e "Downloading manpy.py to ${DEST_PATH}..."
 
 if command -v curl >/dev/null 2>&1; then
     curl -fsSL "$GITHUB_URL" -o "$DEST_PATH"
@@ -65,7 +65,7 @@ manpy() {
 
     # 1. Run script forcing color. 2>&1 captures both stdout and stderr.
     # Note: Using absolute path to ensuring no $PATH issues
-    output=$(FORCE_COLOR=1 $DEST_PATH "$1" 2>&1)
+    output=$(FORCE_COLOR=1 ~/manpy.py "$1" 2>&1)
     exit_code=$?
 
     if [ $exit_code -eq 0 ]; then
