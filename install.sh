@@ -3,6 +3,8 @@
 # Configuration
 GITHUB_URL="https://raw.githubusercontent.com/TheValiant/manpy/main/pyhelp.py"
 DEST_PATH="$HOME/pyhelp.py"
+BASHRC_FILE="$HOME/.bashrc"
+ZSHRC_FILE="$HOME/.zshrc"
 MARKER_START="# --- manpy configuration start ---"
 MARKER_END="# --- manpy configuration end ---"
 
@@ -63,7 +65,7 @@ manpy() {
 
     # 1. Run script forcing color. 2>&1 captures both stdout and stderr.
     # Note: Using absolute path to ensuring no $PATH issues
-    output=$(FORCE_COLOR=1 ~/pyhelp.py "$1" 2>&1)
+    output=$(FORCE_COLOR=1 $DEST_PATH "$1" 2>&1)
     exit_code=$?
 
     if [ $exit_code -eq 0 ]; then
@@ -112,11 +114,13 @@ update_rc_file() {
     fi
 }
 
+chmod +x $DEST_PATH
+
 # ------------------------------------------------------------------
 # 5. Run updates
 # ------------------------------------------------------------------
-update_rc_file "$HOME/.bashrc"
-update_rc_file "$HOME/.zshrc"
+update_rc_file "$BASHRC_FILE"
+update_rc_file "$ZSHRC_FILE"
 
 echo --------------------------------------------------
 echo -e "${GREEN}Installation complete!${NC}"
