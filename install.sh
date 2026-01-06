@@ -114,7 +114,7 @@ update_rc_file() {
     fi
 }
 
-chmod +x $DEST_PATH
+chmod +x "$DEST_PATH"
 
 # ------------------------------------------------------------------
 # 5. Run updates
